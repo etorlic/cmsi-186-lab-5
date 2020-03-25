@@ -1,7 +1,5 @@
-# CMSI 186 Lab 5 Pod Racing Starter Code
+# CMSI 186 Lab 5 Pod Racing
 
-This repository contains the starter code for the Pod Racing laboratory assignment. You will find some unfinished Java classes that you will need to complete. You will also have to add some new classes of your own.
+This repository contains the code for the Pod Racing laboratory assignment. 
 
-Import this repository into a new repository of your own and write the code according to the lab [instructions](https://cs.lmu.edu/~ray/classes/plab/lab/5/). Use the provided test scripts as you complete the laboratory assignment.
-
-In your new repository, don’t forget to completely edit this README file, as _your_ repository will not contain any “unfinished Java programs.” Consider adding a fun image, but not _too_ fun, as your GitHub repository will be checked by prospective employers.
+There will be a virtual pod race with pods that will have random attributes. Some may go fast or slow, there might even be some pods that don't work at all. 
