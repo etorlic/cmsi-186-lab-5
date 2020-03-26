@@ -28,7 +28,7 @@ public class Pod {
 
         for (double i = startTime; i < endTime; i += SUBINTERVAL) {
             vSum += v(i);
-		}
+        }
 
         return vSum * SUBINTERVAL;
     }
