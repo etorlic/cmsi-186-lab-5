@@ -17,12 +17,19 @@ public class Pod {
         return velocityFunction.apply(t);
     }
 
+    //takes the left Riemann sum
     public double distanceTraveled(double startTime, double endTime, int slices) {
-        // Complete this method. It estimates the distance traveled between the
-        // given start and end times by slicing up the time periods into a certain
-        // number of slices, as will be described in class. If this method is not
-        // passed at least one slice, throw an IllegalArgumentException with the
-        // message "At least one slice required".
-        return 0.0;
+        if (slices < 1) {
+            throw new IllegalArgumentException("At least one slice required");
+        }
+
+        final double SUBINTERVAL = (endTime - startTime)/slices;
+        var vSum = 0.0;
+
+        for (double i = startTime; i < endTime; i += SUBINTERVAL) {
+            vSum += v(i);
+        }
+
+        return vSum * SUBINTERVAL;
     }
 }
