@@ -20,15 +20,12 @@ public class PodRace {
         for (int i = 0; i < podDistances.length; i++) {
             podDistances[i] = 0.0;
         }
-        for (double i = 0; i < timeLimit; i += timeSlice) {
+        for (double i = 0; i <= timeLimit; i += timeSlice) {
             for (int v = 0; v < racers.size(); v++) {
                 podDistances[v] += ((Pod)raceWinners).distanceTraveled(i, i + timeSlice, 1);
-                if (podDistances[v] >= distance) {
-                    return racers;
+                if (i >= timeLimit && podDistances[v] <= distance) {
+                    raceWinners.remove((Pod)(raceWinners));
                 }
-            }
-            if (i >= timeLimit) {
-                return racers;
             }
         }
 
