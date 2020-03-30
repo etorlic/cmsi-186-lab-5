@@ -22,8 +22,8 @@ public class Pod {
         if (slices < 1) {
             throw new IllegalArgumentException("At least one slice required");
         }
-
-        final double SUBINTERVAL = (endTime - startTime)/slices;
+        
+        final double SUBINTERVAL = (endTime - startTime)/slices; 
         var vSum = 0.0;
 
         for (double i = startTime; i < endTime; i += SUBINTERVAL) {
