@@ -1,3 +1,5 @@
+import java.util.function.Function;
+
 public class PolynomialPod extends Pod {
     public PolynomialPod(String name, double... c) {
         super(name, t -> polyFunction(c));
