@@ -3,32 +3,34 @@ import java.util.HashSet;
 import java.util.HashMap;
 
 public class PodRace {
-    public static Set<Pod> race(double distance, Set<Pod> racers, double timeSlice, double timeLimit) {
-        Set<Pod> raceWinners = racers; 
+    public static Set<Pod> race(double distance, Set<Pod> racers, double timeSlice, double timeLimit) { 
         if (distance <= 0) {
             throw new IllegalArgumentException("The race track can't be 0 or negative");
         }
+
+        Set<Pod> raceWinners = new HashSet<Pod>();
         if (racers.size() == 0) {
             return raceWinners;
         }   
-        if (racers.size() == 1) {
-            return raceWinners;
+
+        //creates a HashMap for each pod's distances
+        var distances = new HashMap<Pod, Double>();
+        for (var p : racers) {
+            distances.put(p, 0.0); //intializes keys and values
         }
 
-        //somehow find a way to see when the race is over remove the pods who didn't make the distance
-        double[] podDistances = new double[racers.size()]; //array of total distances for each pod
-        for (int i = 0; i < podDistances.length; i++) {
-            podDistances[i] = 0.0;
-        }
-        for (double i = 0; i <= timeLimit; i += timeSlice) {
-            for (int v = 0; v < racers.size(); v++) {
-                podDistances[v] += ((Pod)raceWinners).distanceTraveled(i, i + timeSlice, 1);
-                if (i >= timeLimit && podDistances[v] <= distance) {
-                    raceWinners.remove((Pod)(raceWinners));
+        for (var t = 0; t <= timeLimit; t += timeSlice) {
+            for (var p : racers) { //iterates and updates total distances
+                distances.replace(p, distances.get(p) + p.distanceTraveled(t, t + timeSlice, 1));
+                if (distances.get(p) >= distance) {
+                    raceWinners.add(p);
                 }
             }
+            //stops the for loop once theres a winner or tie
+            if (raceWinners.size() > 0) {
+                break;
+            }
         }
-
         return raceWinners;
     }
 }
